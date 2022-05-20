@@ -1,18 +1,17 @@
 # image: https://hub.docker.com/r/websoft9dev/discuzq
 
-FROM ccr.ccs.tencentyun.com/discuzq/dzq:latest
+FROM centos:7
 
 LABEL maintainer="help@websoft9.com"
 LABEL version="latest"
-LABEL description="DiscuzQ"
+LABEL description="BT"
 
-ENV DISCUZQ_MYSQL_HOST=mysql
-ENV DISCUZQ_MYSQL_USER=discuzq
-ENV DISCUZQ_MYSQL_PASSWORD=discuzq
-ENV DISCUZQ_MYSQL_DATABASE=discuzq
-ENV DISCUZQ_SITENAME=DiscuzQ
+ENV BT_USER=administrator
+ENV BT_PASSWORD=admin123
 
-COPY cmd.sh /tmp
-RUN chmod +x /tmp/cmd.sh
+RUN yum -y update && yum clean all
+RUN yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_6.0.sh && echo "y" | sh install.sh ed8484bec
 
-CMD ["/tmp/cmd.sh"]
+CMD ["/bin/sh", "-c", "/aapanel.sh 3"]
+
+HEALTHCHECK CMD curl -sf http://127.0.0.1:8888 || exit 1   
