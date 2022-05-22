@@ -1,4 +1,5 @@
-# image: https://hub.docker.com/r/aapanel/aapanel
+# English image: https://hub.docker.com/r/aapanel/aapanel
+# Chinese image: https://hub.docker.com/r/btpanel/btpanel
 
 
 version: '3.8'
@@ -7,6 +8,8 @@ services:
   aapanel:
     image: aapanel/aapanel:${APP_VERSION}
     container_name: ${APP_NAME}
+    labels:
+      - "editon=English"
     ports:
       - '${APP_FTP_PORT}:21'
       - '${APP_SSH_PORT}:22'
@@ -16,11 +19,33 @@ services:
       - BT_USER=$APP_USER
       - BT_PASSWORD=$APP_PASSWORD
     volumes:
-      - 'aapanel:/www'
-      
+      - 'www:/www'
+    profiles:
+      - en
+
+  baotao:
+    image: btpanel/baota:${APP_VERSION}
+    container_name: ${APP_NAME}
+    labels:
+      - "editon=Chinese"
+    ports:
+      - '${APP_FTP_PORT}:21'
+      - '${APP_SSH_PORT}:22'
+      - '${APP_PORT}:8888'
+      - '${APP_PHPMYADMIN_PORT}:888'
+    environment:
+      - BT_USER=$APP_USER
+      - BT_PASSWORD=$APP_PASSWORD
+    command: /bin/sh -c 'rm -f /www/server/panel/data/admin_path.pl && echo $APP_USER | bt 6  && echo $APP_PASSWORD | bt 5 && /bt.sh'
+
+    volumes:
+      - 'www:/www'
+    profiles:
+      - cn
+
 networks:
   default:
       name: ${APP_NAME}
 
 volumes:
-  aapanel:
+  www:

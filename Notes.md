@@ -1,13 +1,14 @@
 # BT
 
-## 中文版
+官方在 docker hub 上提供了中文和英文两个版本的镜像：
 
-1. 使用 centos 容器镜像
-2. 容器中运行宝塔安装脚本，可以安装成功，且容器重启后可以继续访问
+* https://hub.docker.com/u/btpanel
+* https://hub.docker.com/u/aapanel
 
-## 英文版
 
-直接使用官方存储在 Dockerhub 上的镜像
+## 密码问题
+
+宝塔镜像安装后，存在默认用户名和密码，可以通过如下命令修改。  
 
 ```
 # 修改默认密码
@@ -16,3 +17,21 @@ echo -e "5\nadmin123" | bt
 # 修改默认用户名
 echo -e "6\nadministrator" | bt
 ```
+
+或
+```
+# 仅支持修改密码，官方未提供用户名修改方案
+cd /www/server/panel && python tools.py panel $APP_PASSWORD
+```
+
+## 删除登录URI问题
+
+```
+/www/server/panel/data/admin_path.pl
+
+```
+
+## to do
+
+* docker restart 后密码又被重置。仅初始化生效的改名方案参考：https://github.com/Cyberbolt/baota/blob/main/app/script.py
+
