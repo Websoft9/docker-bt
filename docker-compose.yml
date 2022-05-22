@@ -1,5 +1,6 @@
 # English image: https://hub.docker.com/r/aapanel/aapanel
 # Chinese image: https://hub.docker.com/r/btpanel/btpanel
+# English image not have /bt.sh script, so cat from Chinese image and add it to command
 
 
 version: '3.8'
@@ -15,6 +16,7 @@ services:
       - '${APP_SSH_PORT}:22'
       - '${APP_PORT}:8888'
       - '${APP_PHPMYADMIN_PORT}:888'
+    command: /bin/sh -c 'rm -f /www/server/panel/data/admin_path.pl && echo $APP_USER | bt 6  && echo $APP_PASSWORD | bt 5 && /etc/init.d/bt restart; pkill crond; /sbin/crond; tail -f /dev/null'
     environment:
       - BT_USER=$APP_USER
       - BT_PASSWORD=$APP_PASSWORD
@@ -37,7 +39,6 @@ services:
       - BT_USER=$APP_USER
       - BT_PASSWORD=$APP_PASSWORD
     command: /bin/sh -c 'rm -f /www/server/panel/data/admin_path.pl && echo $APP_USER | bt 6  && echo $APP_PASSWORD | bt 5 && /bt.sh'
-
     volumes:
       - 'www:/www'
     profiles:
