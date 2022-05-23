@@ -27,7 +27,7 @@ services:
     profiles:
       - en
 
-  baotao:
+  btpanel:
     image: btpanel/baota:${APP_VERSION}
     container_name: ${APP_NAME}
     labels:
