@@ -5,6 +5,8 @@
 * https://hub.docker.com/u/btpanel
 * https://hub.docker.com/u/aapanel
 
+启动进程分别为：/aapanel.sh 和 /bt.sh
+
 
 ## 密码问题
 
@@ -31,18 +33,8 @@ cd /www/server/panel && python tools.py panel $APP_PASSWORD
 
 ```
 
-## English 版初始化进程
-
-英文版没有 /bt.sh （内容如下）前台进程，导致容器无法生存
-   ```
-/etc/init.d/bt restart
-pkill crond
-/sbin/crond
-tail -f /dev/null
-  ```
-
-
 ## to do
 
 * docker restart 后密码又被重置。仅初始化生效的改名方案参考：https://github.com/Cyberbolt/baota/blob/main/app/script.py
+* configs 带入的文件没有执行权限
 

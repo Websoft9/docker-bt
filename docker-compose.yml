@@ -16,12 +16,14 @@ services:
       - '${APP_SSH_PORT}:22'
       - '${APP_PORT}:8888'
       - '${APP_PHPMYADMIN_PORT}:888'
-    command: /bin/sh -c 'rm -f /www/server/panel/data/admin_path.pl && echo $APP_USER | bt 6  && echo $APP_PASSWORD | bt 5 && /etc/init.d/bt restart; pkill crond; /sbin/crond; tail -f /dev/null'
     environment:
-      - BT_USER=$APP_USER
-      - BT_PASSWORD=$APP_PASSWORD
+      - BAOTA_USER=$APP_USER
+      - BAOTA_PASSWORD=$APP_PASSWORD
     volumes:
       - 'www:/www'
+    command: bash -c "cat /my_cmd > cmd.sh && chmod +x /cmd.sh && /cmd.sh"
+    configs:
+      - source: my_cmd
     profiles:
       - en
 
@@ -35,10 +37,12 @@ services:
       - '${APP_SSH_PORT}:22'
       - '${APP_PORT}:8888'
       - '${APP_PHPMYADMIN_PORT}:888'
+    command: bash -c "cat /my_cmd > cmd.sh && chmod +x /cmd.sh && /cmd.sh"
+    configs:
+      - source: my_cmd
     environment:
-      - BT_USER=$APP_USER
-      - BT_PASSWORD=$APP_PASSWORD
-    command: /bin/sh -c 'rm -f /www/server/panel/data/admin_path.pl && echo $APP_USER | bt 6  && echo $APP_PASSWORD | bt 5 && /bt.sh'
+      - BAOTA_USER=$APP_USER
+      - BAOTA_PASSWORD=$APP_PASSWORD
     volumes:
       - 'www:/www'
     profiles:
@@ -50,3 +54,7 @@ networks:
 
 volumes:
   www:
+
+configs:
+  my_cmd:
+    file: ./cmd.sh
