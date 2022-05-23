@@ -6,48 +6,23 @@
 version: '3.8'
 
 services:
-  aapanel:
-    image: aapanel/aapanel:${APP_VERSION}
-    container_name: ${APP_NAME}
-    labels:
-      - "editon=English"
-    ports:
-      - '${APP_FTP_PORT}:21'
-      - '${APP_SSH_PORT}:22'
-      - '${APP_PORT}:8888'
-      - '${APP_PHPMYADMIN_PORT}:888'
-    environment:
-      - BAOTA_USER=$APP_USER
-      - BAOTA_PASSWORD=$APP_PASSWORD
-    volumes:
-      - 'www:/www'
-    command: bash -c "cat /my_cmd > cmd.sh && chmod +x /cmd.sh && /cmd.sh"
-    configs:
-      - source: my_cmd
-    profiles:
-      - en
-
   btpanel:
-    image: btpanel/baota:${APP_VERSION}
+    image: $APP_REPO:$APP_VERSION
     container_name: ${APP_NAME}
-    labels:
-      - "editon=Chinese"
     ports:
       - '${APP_FTP_PORT}:21'
       - '${APP_SSH_PORT}:22'
       - '${APP_PORT}:8888'
       - '${APP_PHPMYADMIN_PORT}:888'
-    command: bash -c "cat /my_cmd > cmd.sh && chmod +x /cmd.sh && /cmd.sh"
-    configs:
-      - source: my_cmd
     environment:
       - BAOTA_USER=$APP_USER
       - BAOTA_PASSWORD=$APP_PASSWORD
     volumes:
       - 'www:/www'
-    profiles:
-      - cn
-
+    command: bash -c "cat /my_cmd > cmd.sh && chmod +x /cmd.sh && /cmd.sh"
+    configs:
+      - source: my_cmd
+      
 networks:
   default:
       name: ${APP_NAME}
