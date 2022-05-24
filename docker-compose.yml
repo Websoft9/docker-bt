@@ -17,10 +17,9 @@ services:
       - BAOTA_PASSWORD=$APP_PASSWORD
     volumes:
       - "www:/www"
-    command: bash -c "/cmd.sh"
+    command: bash -c "cat /my_cmd > cmd.sh && chmod +x /cmd.sh && /cmd.sh"
     configs:
       - source: my_cmd
-        target: /cmd.sh
 
 networks:
   default:
