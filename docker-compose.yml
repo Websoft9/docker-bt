@@ -1,6 +1,5 @@
 # English image: https://hub.docker.com/r/aapanel/aapanel
 # Chinese image: https://hub.docker.com/r/btpanel/btpanel
-# English image not have /bt.sh script, so cat from Chinese image and add it to command
 
 version: "3.8"
 
