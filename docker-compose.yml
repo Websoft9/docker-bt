@@ -2,30 +2,30 @@
 # Chinese image: https://hub.docker.com/r/btpanel/btpanel
 # English image not have /bt.sh script, so cat from Chinese image and add it to command
 
-
-version: '3.8'
+version: "3.8"
 
 services:
   btpanel:
     image: $APP_REPO:$APP_VERSION
     container_name: ${APP_NAME}
     ports:
-      - '${APP_FTP_PORT}:21'
-      - '${APP_SSH_PORT}:22'
-      - '${APP_PORT}:8888'
-      - '${APP_PHPMYADMIN_PORT}:888'
+      - "${APP_FTP_PORT}:21"
+      - "${APP_SSH_PORT}:22"
+      - "${APP_PORT}:8888"
+      - "${APP_PHPMYADMIN_PORT}:888"
     environment:
       - BAOTA_USER=$APP_USER
       - BAOTA_PASSWORD=$APP_PASSWORD
     volumes:
-      - 'www:/www'
-    command: bash -c "cat /my_cmd > cmd.sh && chmod +x /cmd.sh && /cmd.sh"
+      - "www:/www"
+    command: bash -c "/cmd.sh"
     configs:
       - source: my_cmd
-      
+        target: /cmd.sh
+
 networks:
   default:
-      name: ${APP_NAME}
+    name: ${APP_NAME}
 
 volumes:
   www:
