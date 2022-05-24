@@ -1,9 +1,7 @@
 #!/bin/bash
 # customrized cmd powered by Websoft9
 
-
-
-if [[ -f /opt/bitnami/scripts/libmysqlclient.sh ]]; then
+if [[ -f /www/server/panel/data/admin_path.pl ]]; then
     rm -f /www/server/panel/data/admin_path.pl 
     echo $BAOTA_USER | bt 6  
     echo $BAOTA_PASSWORD | bt 5 
