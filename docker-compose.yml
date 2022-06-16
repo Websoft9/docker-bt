@@ -17,7 +17,7 @@ services:
       - BAOTA_USER=$APP_USER
       - BAOTA_PASSWORD=$APP_PASSWORD
     volumes:
-      - "www:/www"
+      - www:/www
     command: bash -c "cat /my_cmd > cmd.sh && chmod +x /cmd.sh && /cmd.sh"
     configs:
       - source: my_cmd
