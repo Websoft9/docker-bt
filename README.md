@@ -56,6 +56,8 @@ curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
 sudo systemctl enable docker
 sudo systemctl start docker
 alias docker-compose='docker compose'
+echo "alias docker-compose='docker compose'" >> /etc/profile.d/docker-compose.sh
+source /etc/profile.d/docker-compose.sh
 ```
 
 #### Install aaPanel
@@ -67,7 +69,8 @@ git clone --depth=1 https://github.com/Websoft9/docker-aapanel
 cd docker-aapanel
 docker-compose --profile en up -d  
 docker-compose --profile en up -  
-docker-compose  up -d
+docker network create websoft9 
+docker compose  up -d
 ```
 
 ### FAQ
