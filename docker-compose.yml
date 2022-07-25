@@ -42,7 +42,8 @@ services:
     configs:
       - source: my_cmd
     profiles:
-      - aapanel      
+      - aapanel
+
 networks:
   default:
     name: ${APP_NETWORK}
