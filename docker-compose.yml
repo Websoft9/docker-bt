@@ -31,7 +31,7 @@ services:
     ports:
       - "${APP_FTP_PORT}:21"
       - "${APP_SSH_PORT}:22"
-      - "${APP_PORT}:8888"
+      - "${APP_PORT}:7800"
       - "${APP_PHPMYADMIN_PORT}:888"
     environment:
       - BAOTA_USER=$APP_USER
