@@ -25,7 +25,7 @@ services:
       - btpanel
       
   aapanel:
-    image: $APP_REPO:$APP_VERSION
+    image: aapanel/aapanel:$APP_VERSION
     container_name: ${APP_NAME}
     restart: always
     ports:
