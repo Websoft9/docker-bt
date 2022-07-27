@@ -5,7 +5,7 @@ version: "3.8"
 
 services:
   btpanel:
-    image: $APP_REPO:$APP_VERSION
+    image: btpanel/baota:$APP_VERSION
     container_name: ${APP_NAME}
     restart: always
     ports:
