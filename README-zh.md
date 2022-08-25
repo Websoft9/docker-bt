@@ -1,4 +1,4 @@
-# aaPanel on Docker
+# BT on Docker
 
 ![](https://libs.websoft9.com/common/websoft9-cloud-installer.png) 
 
@@ -6,7 +6,7 @@
 
 [简体中文](/README-zh.md) | [English](/README.md) 
 
-本项目是由 [Websoft9](https://www.websoft9.com) 研发的 **云原生程序** ，大大简化 aaPanel 复杂的安装及配置。
+本项目是由 [Websoft9](https://www.websoft9.com) 研发的 **云原生程序** ，大大简化 BT 复杂的安装及配置。
 
 ## 系统要求
 
@@ -29,7 +29,7 @@
 登录 Linux，运行下面的**自动化命令**即可启动安装并显示安装结果。  
 
 ```
-sudo wget -N https://raw.githubusercontent.com/Websoft9/StackHub/main/docker-installer.sh; sudo bash docker-installer.sh -r aapanel
+sudo wget -N https://raw.githubusercontent.com/Websoft9/StackHub/main/docker-installer.sh; sudo bash docker-installer.sh -r bt
 
 ```
 
@@ -38,13 +38,13 @@ sudo wget -N https://raw.githubusercontent.com/Websoft9/StackHub/main/docker-ins
 1.生成package包
 登录 Linux，运行下面的**自动化命令**即可生成所需的package包。
 ```
-sudo wget -N https://raw.githubusercontent.com/Websoft9/StackHub/main/docker-installer.sh; sudo bash docker-installer.sh -r aapanel -p
+sudo wget -N https://raw.githubusercontent.com/Websoft9/StackHub/main/docker-installer.sh; sudo bash docker-installer.sh -r bt -p
 ```
 2.复制package包后安装
 
 将压缩的package包复制到想要安装的服务器或虚拟机，登录 Linux，运行下面的**自动化命令**即可启动安装并显示安装结果。
 ```
-sudo bash install-aapanel
+sudo bash install-bt
 ```
 
 ### 手动安装
@@ -64,22 +64,22 @@ echo "alias docker-compose='docker compose'" >> /etc/profile.d/docker-compose.sh
 source /etc/profile.d/docker-compose.sh
 ```
 
-#### 安装 aaPanel
+#### 安装 BT
 
 直接运行下面的命令快速安装应用。如果你熟悉 Docker，建议先修改 [docker-compose](docker-compose.yml) 文件以满足自己的需求
 
 ```
-git clone --depth=1 https://github.com/Websoft9/docker-aapanel
-cd docker-aapanel
-docker-compose --profile en up -d  
-docker-compose --profile en up -  
+git clone --depth=1 https://github.com/Websoft9/docker-bt
+cd docker-bt
+docker compose --profile aapanel up -d  
+docker compose --profile btpanel up -d  
 sudo docker network create websoft9 
 sudo docker compose up -d
 ```
 
 ### 常见问题
 
-#### 安装 aaPanel 前需要更改密码吗？
+#### 安装 BT 前需要更改密码吗？
 
 是的, 在生产环境中，您应该在 docker-compose 文件中修改所有数据库密码和应用程序密码
 
@@ -95,11 +95,11 @@ sudo docker compose up -d
 
 ## 文档
 
-[aaPanel 管理员手册](https://support.websoft9.com/docs/aapanel)
+[BT 管理员手册](https://support.websoft9.com/docs/bt)
 
 ## 企业级支持
 
-如果需要企业级支持，请订阅我们提供的 [aaPanel 企业级支持版](https://apps.websoft9.com/aapanel) 
+如果需要企业级支持，请订阅我们提供的 [BT 企业级支持版](https://apps.websoft9.com/bt) 
 
 订阅企业级产品后，您可获得：
 

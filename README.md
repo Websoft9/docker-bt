@@ -1,4 +1,4 @@
-# aaPanel on Docker
+# BT on Docker
 
 ![](https://libs.websoft9.com/common/websott9-cloud-installer.png) 
 
@@ -29,20 +29,20 @@ The following are the minimal [recommended requirements](https://github.com/aaPa
 Use SSH to connect your instance and run the automatic installation script below
 
 ```
-sudo wget -N https://raw.githubusercontent.com/Websoft9/StackHub/main/docker-installer.sh; sudo bash docker-installer.sh -r aapanel
+sudo wget -N https://raw.githubusercontent.com/Websoft9/StackHub/main/docker-installer.sh; sudo bash docker-installer.sh -r bt
 ```
 ### package install
 
 1.Make package
 You can get the  package as following script
 ```
-sudo wget -N https://raw.githubusercontent.com/Websoft9/StackHub/main/docker-installer.sh; sudo bash docker-installer.sh -r aapanel -p
+sudo wget -N https://raw.githubusercontent.com/Websoft9/StackHub/main/docker-installer.sh; sudo bash docker-installer.sh -r bt -p
 ```
 
 2.Install by package
 Copy package to your server, Use SSH to connect your instance and run the automatic installation script below
 ```
-sudo bash install-aapanel
+sudo bash install-bt
 ```
 
 ### Manual Installation
@@ -60,15 +60,15 @@ echo "alias docker-compose='docker compose'" >> /etc/profile.d/docker-compose.sh
 source /etc/profile.d/docker-compose.sh
 ```
 
-#### Install aaPanel
+#### Install BT
 
 We assume that you are already familiar with Docker, and you can modify [docker-compose file](docker-compose.yml) by yourself
 
 ```
-git clone --depth=1 https://github.com/Websoft9/docker-aapanel
-cd docker-aapanel
-docker-compose --profile en up -d  
-docker-compose --profile en up -  
+git clone --depth=1 https://github.com/Websoft9/docker-bt
+cd docker-bt
+docker compose --profile aapanel up -d  
+docker compose --profile btpanel up -d  
 docker network create websoft9 
 docker compose  up -d
 ```
@@ -89,11 +89,11 @@ The following is the information that may be needed during use
 
 ## Documentation
 
-[aaPanel Administrator Guide](https://support.websoft9.com/docs/aapanel)
+[BT Administrator Guide](https://support.websoft9.com/docs/bt)
 
 ## Enterprise Support
 
-If you want to get our Enterprise Support to ensure high availability of applications, you can subscribe our [aaPanel Enterprise Support](https://apps.websoft9.com/aapanel) 
+If you want to get our Enterprise Support to ensure high availability of applications, you can subscribe our [BT Enterprise Support](https://apps.websoft9.com/bt) 
 
 What you get with a Enterprise Support subscription?
 
