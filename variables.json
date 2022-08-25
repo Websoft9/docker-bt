@@ -16,10 +16,10 @@
 
   "command_extra":[
     {
-      "cmd": "docker-compose --profile en up -d"
+      "cmd": "docker compose --profile aapanel up -d"
     },
     {
-      "cmd": "docker-compose --profile en up -"
+      "cmd": "docker compose --profile btpanel up -d"
     }
   ]
 
