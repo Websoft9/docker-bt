@@ -1,7 +1,7 @@
 {
-  "name": "aapanel",
-  "trademark": "aaPanel",
-  "installpath": "/data/wwwroot/aapanel",
+  "name": "bt",
+  "trademark": "BT",
+  "installpath": "/data/apps/aapanel",
   "compose_file": "docker-compose.yml",
   "fork_url": "https://github.com/aaPanel/BaoTa",
   "env_file": ".env",
