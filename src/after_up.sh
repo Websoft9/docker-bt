@@ -1,2 +1,2 @@
 sleep 30s
-echo "16" |docker exec -i bt bt
+docker exec -i bt bt 16
